@@ -1,11 +1,15 @@
 package com.ibm.pratica.praticando.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 /*
  * Informando que a classe eh uma entidade.
@@ -14,6 +18,7 @@ import javax.persistence.Id;
  * (para que o objeto trafegue na rede).
 */
 @Entity
+@Table(name = "user")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -27,8 +32,10 @@ public class User implements Serializable {
 	private String cpnj;
 	private String razaoSocial;
 	
-	//Metodos construtores
+	@OneToMany(mappedBy = "usuario")
+	private List<Pedido> pedidos = new ArrayList<>();
 	
+	//Metodos construtores
 	//Metodo construtor vazio
 	public User () {
 		
@@ -66,7 +73,11 @@ public class User implements Serializable {
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
 	}
-
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+	
 	//Metodos hashCode e Equals realiza a comparacao dos objetos
 	@Override
 	public int hashCode() {
@@ -90,6 +101,8 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [id=" + id + "]";
 	}
+
+	
 	
 	
 	
