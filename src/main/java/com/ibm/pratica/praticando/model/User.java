@@ -36,7 +36,6 @@ public class User implements Serializable {
 	private String razaoSocial;
 	
 
-	@JsonIgnoreProperties
 	@OneToMany(mappedBy = "usuario")
 	private List<Pedido> pedidos = new ArrayList<>();
 	
