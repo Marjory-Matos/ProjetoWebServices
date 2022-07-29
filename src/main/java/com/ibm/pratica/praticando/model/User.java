@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 /*
  * Informando que a classe eh uma entidade.
@@ -33,6 +35,8 @@ public class User implements Serializable {
 	private String cpnj;
 	private String razaoSocial;
 	
+
+	@JsonIgnoreProperties
 	@OneToMany(mappedBy = "usuario")
 	private List<Pedido> pedidos = new ArrayList<>();
 	
