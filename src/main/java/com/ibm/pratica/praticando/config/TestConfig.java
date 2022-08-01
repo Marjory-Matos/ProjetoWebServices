@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.ibm.pratica.praticando.model.Category;
 import com.ibm.pratica.praticando.model.Pedido;
 import com.ibm.pratica.praticando.model.User;
 import com.ibm.pratica.praticando.model.enums.OrderStatus;
+import com.ibm.pratica.praticando.repository.CategoryRepository;
 import com.ibm.pratica.praticando.repository.PedidoRepository;
 import com.ibm.pratica.praticando.repository.UserRespository;
 /*
@@ -30,11 +32,19 @@ public class TestConfig implements CommandLineRunner{
 	@Autowired
 	private PedidoRepository pedidoRepository;
 	
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
 	/*
 	 * Instanciando os objetos e salvando no banco de dados
 	 */
 	@Override
 	public void run(String... args) throws Exception {
+		
+		Category cat1 = new Category(null, "Electronics");
+		Category cat2 = new Category(null, "Books");
+		
+		categoryRepository.saveAll(Arrays.asList(cat1, cat2));
 		
 		User u1 = new User(null, "Maria", "MariaSocial");
 		User u2 = new User(null, "Marcio", "MarcioSocial");
