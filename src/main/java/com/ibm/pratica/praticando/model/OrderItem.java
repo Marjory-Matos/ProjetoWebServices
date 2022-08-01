@@ -2,6 +2,7 @@ package com.ibm.pratica.praticando.model;
 
 import java.util.Objects;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.criteria.Order;
@@ -13,6 +14,7 @@ import com.ibm.pratica.praticando.model.pk.OrderItemPK;
 @Table(name = "tb_order_item")
 public class OrderItem {
 	
+	@EmbeddedId
 	private OrderItemPK id;
 	
 	private Integer quantity;
