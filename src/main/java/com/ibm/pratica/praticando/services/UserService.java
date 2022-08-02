@@ -43,5 +43,19 @@ public class UserService {
 		repository.deleteById(id);
 	}
 	
+	/*metodo getOne ira instancia um usuario mas nao ira salva-lo no banco de dados
+	 * para poder manipula-lo
+	*/
+	public User update(Long id, User obj) {
+		User entity = repository.getOne(id);
+		updateData(entity, obj);
+		return repository.save(entity);
+	}
+
+	//ira atualizar os dados no entity, conforme o obj
+	private void updateData(User entity, User obj) {
+		entity.setCpnj(obj.getCpnj());
+		entity.setRazaoSocial(obj.getRazaoSocial());
+	}
 
 }
