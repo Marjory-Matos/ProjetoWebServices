@@ -9,8 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.ibm.pratica.praticando.model.Category;
-import com.ibm.pratica.praticando.model.OrderItem;
 import com.ibm.pratica.praticando.model.Order;
+import com.ibm.pratica.praticando.model.OrderItem;
+import com.ibm.pratica.praticando.model.Payment;
 import com.ibm.pratica.praticando.model.Product;
 import com.ibm.pratica.praticando.model.User;
 import com.ibm.pratica.praticando.model.enums.OrderStatus;
@@ -80,6 +81,10 @@ public class TestConfig implements CommandLineRunner{
 		
 		orderItemRepository.saveAll(Arrays.asList(o1, o2));
 		
+		Payment pay1 = new Payment(null, Instant.parse("2019-06-20T18:53:007"), o1);
+		o1.setPayment(pay1);
+		
+		pedidoRepository.save(o1);
 		
 	}
 	
