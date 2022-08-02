@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ibm.pratica.praticando.model.User;
 import com.ibm.pratica.praticando.repository.UserRespository;
+import com.ibm.pratica.praticando.services.exception.ResourceNotFoundException;
 
 //Implementacao das regras de negocio
 //Verificara com o repository o que esta sendo requisitado
@@ -28,7 +29,7 @@ public class UserService {
 	//metodo que busca todos os usuarios por id
 	public User findById(Long id){
 		 Optional<User> obj = repository.findById(id);
-		 return obj.get();
+		 return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	//metodo para salvar um usuario no banco de dados
