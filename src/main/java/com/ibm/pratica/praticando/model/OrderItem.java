@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.criteria.Order;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ibm.pratica.praticando.model.pk.OrderItemPK;
 
 
@@ -15,7 +16,7 @@ import com.ibm.pratica.praticando.model.pk.OrderItemPK;
 public class OrderItem {
 	
 	@EmbeddedId
-	private OrderItemPK id;
+	private OrderItemPK id = new OrderItemPK();;
 	
 	private Integer quantity;
 	private Double price;
@@ -32,6 +33,7 @@ public class OrderItem {
 		this.price = price;
 	}
 	
+	@JsonIgnore
 	public Order getOrder() {
 		return id.getOrder();
 	}

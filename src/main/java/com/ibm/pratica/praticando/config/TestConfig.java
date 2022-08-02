@@ -9,11 +9,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.ibm.pratica.praticando.model.Category;
+import com.ibm.pratica.praticando.model.OrderItem;
 import com.ibm.pratica.praticando.model.Pedido;
 import com.ibm.pratica.praticando.model.Product;
 import com.ibm.pratica.praticando.model.User;
 import com.ibm.pratica.praticando.model.enums.OrderStatus;
 import com.ibm.pratica.praticando.repository.CategoryRepository;
+import com.ibm.pratica.praticando.repository.OrderItemRespository;
 import com.ibm.pratica.praticando.repository.PedidoRepository;
 import com.ibm.pratica.praticando.repository.ProductRespository;
 import com.ibm.pratica.praticando.repository.UserRespository;
@@ -39,6 +41,9 @@ public class TestConfig implements CommandLineRunner{
 	
 	@Autowired
 	private ProductRespository productRepository;
+	
+	@Autowired
+	private OrderItemRespository orderItemRepository;
 	
 	/*
 	 * Instanciando os objetos e salvando no banco de dados
@@ -69,6 +74,12 @@ public class TestConfig implements CommandLineRunner{
 		
 		userRespository.saveAll(Arrays.asList(u1, u2));
 		pedidoRepository.saveAll(Arrays.asList(o1, o2));
+		
+		OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+		OrderItem oi2 = new OrderItem(o1, p1, 2, p1.getPrice());
+		
+		orderItemRepository.saveAll(Arrays.asList(o1, o2));
+		
 		
 	}
 	
