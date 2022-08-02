@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.ibm.pratica.praticando.model.Category;
 import com.ibm.pratica.praticando.model.OrderItem;
-import com.ibm.pratica.praticando.model.Pedido;
+import com.ibm.pratica.praticando.model.Order;
 import com.ibm.pratica.praticando.model.Product;
 import com.ibm.pratica.praticando.model.User;
 import com.ibm.pratica.praticando.model.enums.OrderStatus;
@@ -68,8 +68,8 @@ public class TestConfig implements CommandLineRunner{
 		User u1 = new User(null, "Maria", "MariaSocial");
 		User u2 = new User(null, "Marcio", "MarcioSocial");
 		
-		Pedido o1 = new Pedido(null, Instant.parse("2019-06-20T19:53:072"), OrderStatus.PAID, u1);
-		Pedido o2 = new Pedido(null, Instant.parse("2019-07-20T19:53:080"), OrderStatus.WAITING_PAYMENT, u2);
+		Order o1 = new Order(null, Instant.parse("2019-06-20T19:53:072"), OrderStatus.PAID, u1);
+		Order o2 = new Order(null, Instant.parse("2019-07-20T19:53:080"), OrderStatus.WAITING_PAYMENT, u2);
 		
 		
 		userRespository.saveAll(Arrays.asList(u1, u2));

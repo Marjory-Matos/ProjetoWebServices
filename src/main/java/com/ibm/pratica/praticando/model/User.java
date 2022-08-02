@@ -37,7 +37,7 @@ public class User implements Serializable {
 	
 
 	@OneToMany(mappedBy = "usuario")
-	private List<Pedido> pedidos = new ArrayList<>();
+	private List<Order> pedidos = new ArrayList<>();
 	
 	//Metodos construtores
 	//Metodo construtor vazio
@@ -78,7 +78,7 @@ public class User implements Serializable {
 		this.razaoSocial = razaoSocial;
 	}
 	
-	public List<Pedido> getPedidos() {
+	public List<Order> getPedidos() {
 		return pedidos;
 	}
 	

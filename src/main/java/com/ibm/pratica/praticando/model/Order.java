@@ -21,7 +21,7 @@ import com.ibm.pratica.praticando.model.enums.OrderStatus;
 
 @Entity
 @Table(name = "tb_pedido")
-public class Pedido implements Serializable {
+public class Order implements Serializable {
 	private static final long serialVersionUID = 6923150280439334529L;
 	
 	@Id
@@ -42,11 +42,11 @@ public class Pedido implements Serializable {
 	@OneToMany(mappedBy = "id.order")
 	private Set<OrderItem> items = new HashSet<>();
 	
-	public Pedido () {
+	public Order () {
 		
 	}
 
-	public Pedido(Long id, Instant moment, OrderStatus orderStatus, User client) {
+	public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
 		super();
 		this.id = id;
 		this.moment = moment;
@@ -106,7 +106,7 @@ public class Pedido implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Pedido other = (Pedido) obj;
+		Order other = (Order) obj;
 		return Objects.equals(id, other.id);
 	}
 
